@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body> <section id="loginSection" class="login-box">
+    <h2>Librarian Login</h2>
+
+    <form id="loginForm">
+        <input
+            type="text"
+            id="loginUsername"
+            placeholder="Username"
+            required
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+    <header>
+        <h1>Library Management System</h1>
+        <p>Manage books, members and borrowing records</p>
+    </header>
+
+    <nav id="appNav" class="hidden">
+        <button onclick="showSection('dashboard')">
+            Dashboard
+        </button>
+
+        <button onclick="showSection('books')">
+            Books
+        </button>
+
+        <button onclick="showSection('members')">
+            Members
+        </button>
+
+        <button onclick="showSection('loans')">
+            Borrowing
+        </button>
+        <button onclick="logout()">Logout</button>
+    </nav>
+
+    <main id="appMain" class="hidden">
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard" class="page">
+
+            <h2>Dashboard</h2>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>Total Books</h3>
+                    <p id="totalBooks">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Available Books</h3>
+                    <p id="availableBooks">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Total Members</h3>
+                    <p id="totalMembers">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Active Loans</h3>
+                    <p id="activeLoans">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Overdue Loans</h3>
+                    <p id="overdueLoans">0</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOOK MANAGEMENT -->
+
+        <section id="books" class="page hidden">
+
+            <h2>Book Management</h2>
+
+            <form id="bookForm">
+
+                <input
+                    type="text"
+                    id="bookTitle"
+                    placeholder="Book Title"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="bookAuthor"
+                    placeholder="Author"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="bookIsbn"
+                    placeholder="ISBN (optional)"
+                >
+
+                <button type="submit">
+                    Add Book
+                </button>
+
+            </form>
+
+            <input
+                type="text"
+                id="bookSearch"
+                placeholder="Search books..."
+            >
+
+            <h3>All Books</h3>
+
+            <div id="booksList"></div>
+
+        </section>
+
+
+        <!-- MEMBER MANAGEMENT -->
+
+        <section id="members" class="page hidden">
+
+            <h2>Member Management</h2>
+
+            <form id="memberForm">
+
+                <input
+                    type="text"
+                    id="memberName"
+                    placeholder="Member Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="memberEmail"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="memberPhone"
+                    placeholder="Phone Number"
+                >
+
+                <button type="submit">
+                    Register Member
+                </button>
+
+            </form>
+
+            <h3>Registered Members</h3>
+
+            <div id="membersList"></div>
+
+        </section>
+
+
+        <!-- BORROWING MANAGEMENT -->
+
+        <section id="loans" class="page hidden">
+
+            <h2>Issue a Book</h2>
+
+            <form id="loanForm">
+
+                <input
+                    type="number"
+                    id="loanBookId"
+                    placeholder="Book ID"
+                    required
+                    min="1"
+                >
+
+                <input
+                    type="number"
+                    id="loanMemberId"
+                    placeholder="Member ID"
+                    required
+                    min="1"
+                >
+
+                <label for="dueDate">Due Date</label>
+
+                <input
+                    type="date"
+                    id="dueDate"
+                    required
+                >
+
+                <button type="submit">
+                    Issue Book
+                </button>
+
+            </form>
+
+            <h3>Borrowing History</h3>
+
+            <div id="loansList"></div>
+
+        </section>
+
+    </main>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
